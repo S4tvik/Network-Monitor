@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Status</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/Features-Clean.css">
+    <link rel="stylesheet" href="assets/css/Testimonials.css">    
+
+</head>
+<body>
+  <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
+    <div class="container-fluid"><a class="navbar-brand" href="index.html">NetworK Monitor</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="speed.html">Test Internet Speed</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded active disabled" href="network.html">Network Status</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+     
+      <script>
+     
+    /* Add "https://api.ipify.org?format=json" statement
+               this will communicate with the ipify servers in
+               order to retrieve the IP address $.getJSON will
+               load JSON-encoded data from the server using a
+               GET HTTP request */
+                
+    $.getJSON("https://api.ipify.org?format=json", function(data) {
+         
+        // Setting text of element P with id gfg
+        $("#gfg").html(data.ip);
+        $("#plt").html(window.navigator.platform);
+        $("#bro").html(window.navigator.appCodeName)
+    })
+    </script>
+    <section class="text-light bg-primary">
+      <div class= "container-s">
+        <h1 class= "text-center">Network Status</h1>
+        <hr class = "star-light"/>
+        <h4 class="text-center">Here's the details of your network/browser</h4>
+      </div>
+    </section>
+   <section class = "text-dark bg-light" id = "test">
+    <div class= "container-s">
+      <h4 class = "text-center text-dark">Your Browser Details...</h4>
+      <h4 class="text-center text-dark" id="bro"></h4>
+      <h4 class="text-center text-dark" >("Mozilla" is the code name for IE, Chrome, Safari, FireFox and Opera)</h4>
+      <br></br>
+      <h4 class = "text-center text-dark">Your Platform is...</h4>
+      <h4 id="plt" class = "text-center text-dark"></h4>
+      <br></br>
+      <h4 class = "text-center text-dark">Your IPv4 Address is...</h3>
+      <h4 id = "gfg" class="text-center"></h3>
+        <br></br>
+      <h4 class= "text-center" >Click the button to check the connectivity status</h4>
+      <br></br>
+        <center><button class="btn btn-primary btn-lg" onclick="conn()" >Test connectivity</button></center>
+        <script>
+          function conn(){
+          var ifConnected = window.navigator.onLine;
+          if (ifConnected) {
+            alert('Connection available');
+          } else {
+            alert('Connection not available');
+          }
+        }
+        </script> 
+    </div>
+    </section>
+    <section id='p' class = "text-dark bg-light">
+      <h3 class = "text-center">Calculate your Ping Here</h4>
+      <hr class ="star-dark mb-0"/>
+      <div class="container" style="padding-top:100px">
+        <div id="linechart_material"></div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-8">
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Address</span>
+                <input type="text" class="form-control" id="address" value="https://google.com/favicon.ico" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-info" id="test">Test</button>
+                  <button class="btn btn-success" id="start">Start</button>
+                  <button class="btn btn-danger" id="stop" disabled="true">Stop</button>
+                  <button class="btn btn-info" id="reset">Reset</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <div class="btn-group" role="group">
+                  <button class="btn btn-default setaddress" address="https://www.google.com/favicon.ico">google.com</button>
+                  <button class="btn btn-default setaddress" address="https://facebook.com/favicon.ico">facebook.com</button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">Time (ms)</span>
+                <input type="number" class="form-control" id="time" min="1000" value="10000" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- partial -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+      <script src='https://www.google.com/jsapi'></script><script  src="./script.js"></script>      
+    </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/freelancer.js"></script>  
+  </body>
+</html>

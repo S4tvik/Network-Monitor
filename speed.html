@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" href="style.css"><link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/Features-Clean.css">
+    <link rel="stylesheet" href="assets/css/Testimonials.css">
+    <title>Check your speed</title>
+</head>
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav"><div class="container-fluid"><a class="navbar-brand" href="index.html">NetworK Monitor</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded active disabled" href="speed.html">Test Internet Speed</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="network.html">Network Status</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="bg-dark masthead">
+        <div class = "container-s">
+            <h1 class = "text-uppercase text-center text-white">SpeedTest</h1>
+            <hr class = "star-light mb-5">
+            <img class="img-fluid d-block mx-auto mb-0" src="assets/img/speed.png"/> 
+        </div>    
+    </header>    
+    <section class = "text-dark bg-dark">
+        <div class = "container-s">
+            <h3 class = "text-center text-white mb-5 ">Click the start button to test your speed</h3>
+            <center><button class = "btn btn-primary btn-lg" id = "test" onclick= "gets()" >START</button></center>
+        </div>
+    </section>
+    <section class = "text-white bg-primary" id = "test">
+        <div class="container-s">
+            <h4 class="text-center" id="progress">
+            </h4>
+            <h3 class="text-center" id="result" >
+            </h3>
+        </div>
+        <script type="text/javascript">
+          function gets(){
+          InitiateSpeedDetection()
+          var imageAddr = "https://4k-uhd.nl/wp-content/uploads/2018/08/4K-3840x2160-Wallpaper-Uitzicht-5.jpg"; 
+          var downloadSize = 5739426; //bytes
+        
+          function ShowProgressMessage(msg) {
+              var oProgress = document.getElementById("progress");
+              if (oProgress) {
+                  oProgress.innerHTML = msg;
+              }
+          }
+        
+          function showResultMessage(msg){
+            document.getElementById("result").innerHTML = msg;
+            document.getElementById("progress").innerHTML = 'Your Internet Speed is';
+          }
+        
+          function InitiateSpeedDetection() {
+              ShowProgressMessage("Calculating Speed ...");
+              window.setTimeout(MeasureConnectionSpeed, 1);
+          };
+        
+          function MeasureConnectionSpeed() {
+              var startTime, endTime;
+              var download = new Image();
+              download.onload = function () {
+                  endTime = (new Date()).getTime();
+                  showResults();
+              }
+              
+              download.onerror = function (err, msg) {
+                  ShowProgressMessage("Invalid image, or error downloading");
+              }
+              
+              startTime = (new Date()).getTime();
+              var cacheBuster = "?nnn=" + startTime;
+              download.src = imageAddr + cacheBuster;
+              
+              function showResults() {
+                  var duration = (endTime - startTime) / 1000;
+                  var bitsLoaded = downloadSize * 8;
+                  var speedBps = (bitsLoaded / duration).toFixed(2);
+                  var speedKbps = (speedBps / 1024).toFixed(2);
+                  var speedMbps = (speedKbps / 1024).toFixed(2);
+                  showResultMessage(speedMbps + " Mbps");
+              }
+            }
+        }
+        
+        </script>    
+    </section>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/freelancer.js"></script>
+
+</body> 
+</html>
