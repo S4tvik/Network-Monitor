@@ -13,7 +13,7 @@ This webiste consists of three pages.
 ![image](https://user-images.githubusercontent.com/73573498/147400791-d1e35953-7218-4df6-8bdf-51ad291158c5.png)
 ## Network Status
 ### The status of the browser and the internet connection is notified in this page.
-![image](https://user-images.githubusercontent.com/73573498/147400875-9e2ac45b-64a0-4303-a2ff-85b8edb3f943.png)
+![image](https://user-images.githubusercontent.com/73573498/147400974-c62eecf8-0228-4e7b-9f8a-2d934b32d4c5.png)
 ### Ping is calculated in this page
 ![image](https://user-images.githubusercontent.com/73573498/147400895-457385f3-c091-4f36-afc9-20c21130bfe0.png)
 
